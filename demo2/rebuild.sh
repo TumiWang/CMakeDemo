@@ -11,7 +11,7 @@ if [ -d "$BUILD_DIR" ]; then
     rm -rf "$BUILD_DIR"
 fi
 
-cmake -B "$BUILD_DIR" -S src -G Xcode -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+cmake -B "$BUILD_DIR" -S src -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 if [ $? != 0 ]; then
     echo "cmake创建项目失败"
     exit 0
