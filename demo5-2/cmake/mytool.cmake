@@ -1,0 +1,1 @@
+set(TEST_CONTENT 100)

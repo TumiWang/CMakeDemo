@@ -13,6 +13,7 @@ std::string GetContent() {
     // #define TEST_CONTENT 123
     // #define TEST_CONTENT 1.1f
     // 使用输出流，能够方便的以统一的方式把宏的内容转为std::string
+    // 关于流的更多说明参考附录一
     std::ostringstream os;
 #ifdef TEST_CONTENT
     os << "[" << TEST_CONTENT << "]";

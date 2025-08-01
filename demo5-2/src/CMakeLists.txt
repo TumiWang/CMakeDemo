@@ -9,4 +9,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(test main.cpp)
 
-target_compile_definitions(test PUBLIC TEST_CONTENT)
+if (DEFINED TEST_CONTENT)
+    target_compile_definitions(test PUBLIC TEST_CONTENT=${TEST_CONTENT})
+endif()
