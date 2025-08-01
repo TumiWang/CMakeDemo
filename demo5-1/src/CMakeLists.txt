@@ -7,7 +7,7 @@ project(demo-5)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(test main.cpp)
+add_executable(test2 main.cpp)
 
 # cmake 支持 if 这个逻辑判断 后面的括弧就是判断条件
 # 下面这句的判断条件是判断是否定义了cmake的变量TEST_CONTENT
@@ -19,7 +19,7 @@ if (DEFINED TEST_CONTENT)
     #     ${TEST_CONTENT} 是获取变量的内容
     #     修改 cmake的变量TEST_CONTENT 一般使用set命令，例如
     #     set(TEST_CONTENT 100)
-    target_compile_definitions(test PUBLIC TEST_CONTENT=${TEST_CONTENT})
+    target_compile_definitions(test2 PUBLIC TEST_CONTENT=${TEST_CONTENT})
 # 表示 if 条件结束，注意后面有个括弧
 # 这个括弧中的内容相当于注释，这里我省略了
 # 很多项目在这个括弧中写 if 条件的内容
