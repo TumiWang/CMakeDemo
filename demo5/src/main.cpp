@@ -5,7 +5,6 @@
 #include <sstream>
 #include <string>
 
-
 std::string GetContent() {
     // 这里使用流来接受 TEST_CONTENT宏 的内容
     // 这是因为我们不能确定其内容的类型
@@ -13,6 +12,7 @@ std::string GetContent() {
     // #define TEST_CONTENT "Text"
     // #define TEST_CONTENT 123
     // #define TEST_CONTENT 1.1f
+    // 使用输出流，能够方便的以统一的方式把宏的内容转为std::string
     std::ostringstream os;
 #ifdef TEST_CONTENT
     os << "[" << TEST_CONTENT << "]";
