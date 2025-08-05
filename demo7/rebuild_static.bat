@@ -1,4 +1,4 @@
-:: 文件 rebuild.bat
+:: 文件 rebuild_static.bat
 
 :: 注意: 该文件有中文，需要使用GBK编码或兼容GBK的编码 (中文Windows系统)
 :: 否则bat文件有问题
