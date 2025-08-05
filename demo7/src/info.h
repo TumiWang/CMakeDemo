@@ -17,7 +17,9 @@
     #else
     // 如果不是Windows，我们就简单粗暴的认为是Linux和MacOS
         #if __has_attribute(visibility)
-        #define MY_INFO_EXPORT __attribute__((visibility("default")))
+            #define MY_INFO_EXPORT __attribute__((visibility("default")))
+        #else
+            #define MY_INFO_EXPORT
         #endif
     #endif // _WIN32
 #else

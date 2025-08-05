@@ -7,6 +7,12 @@ project(demo-7)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(MSVC)
+    # msvc编译时，默认适用本地编码。但代码实际使用的是Utf-8
+    # 为了避免这个问题，强制msvc适用utf-8编码
+    add_compile_options(/utf-8)
+endif()
+
 set(INFO_SOURCES
     info.cpp
     # ... 当然这里可以包含更多源文件, 如果需要的话
