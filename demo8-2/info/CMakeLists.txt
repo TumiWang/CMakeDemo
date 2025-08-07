@@ -17,6 +17,6 @@ target_compile_definitions(my_info PRIVATE MY_INFO_IMPL)
 # CMAKE_CURRENT_SOURCE_DIR 是 cmake 的内置变量
 #   表示的是当前文件所在的目录的全路径
 target_include_directories(my_info PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
-# 当然也可以实现下面这句
+# 当然也可以使用下面这句
 # 下面的变量CMAKE_SOURCE_DIR 代表的是根CMakeLists.txt文件所在的全路径
 # target_include_directories(my_info PUBLIC ${CMAKE_SOURCE_DIR}/include)

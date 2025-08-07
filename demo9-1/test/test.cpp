@@ -1,6 +1,5 @@
 // 文件 test/test.cpp
 
-// 实际上修改的只有这句
 #include "info.h"
 
 #include <iostream>
