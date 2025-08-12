@@ -1,4 +1,4 @@
-# 文件 src/CMakeLists.txt
+# 文件 test/CMakeLists.txt
 
 set(TEST_SOURCES
     test.cpp
