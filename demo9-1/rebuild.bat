@@ -38,3 +38,5 @@ IF %ERRORLEVEL% neq 0 (
     echo cmake±‡“Î ß∞‹
     goto end
 )
+
+:end
