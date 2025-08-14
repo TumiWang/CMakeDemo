@@ -52,3 +52,5 @@ IF %ERRORLEVEL% neq 0 (
     echo CMake°²×°Ê§°Ü
     goto end
 )
+
+:end
