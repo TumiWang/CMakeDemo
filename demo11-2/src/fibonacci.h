@@ -21,7 +21,7 @@ private:
     fibonacci_func_type fibonacci_;
 
 #ifdef _WIN32
-    HANDLE module_;
+    HMODULE module_;
 #else
     void* module_;
 #endif // _WIN32
