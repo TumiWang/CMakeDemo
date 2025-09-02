@@ -7,6 +7,10 @@ project(demo-11-2)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(MSVC)
+    add_compile_options(/utf-8)
+endif()
+
 set(SOURCES main.cpp fibonacci.cpp)
 
 # 这里根据不同的平台，使用了不同的源文件
