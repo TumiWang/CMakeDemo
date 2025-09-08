@@ -2,4 +2,4 @@
 
 add_executable(test main.cpp)
 
-target_link_libraries(test PUBLIC info)
+target_link_libraries(test PUBLIC info version_info)

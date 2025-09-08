@@ -1,0 +1,8 @@
+// 文件 version/version.h.in
+
+#ifndef __VERSION_VERSION_H__
+#define __VERSION_VERSION_H__
+
+#define VERSION_INFO "Version: @MAJOR_VERSION@.@MINOR_VERSION@.@REVESION_VERSION@"
+
+#endif // __VERSION_VERSION_H__

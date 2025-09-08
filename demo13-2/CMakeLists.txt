@@ -11,5 +11,6 @@ if(MSVC)
     add_compile_options(/utf-8)
 endif()
 
+add_subdirectory(version)
 add_subdirectory(fibonacci)
 add_subdirectory(test)
