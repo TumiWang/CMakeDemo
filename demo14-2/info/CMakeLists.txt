@@ -4,7 +4,7 @@ add_library(FIBONACCI::info SHARED IMPORTED GLOBAL)
 
 if (WIN32)
     set(SYSTEM_DIR "Windows")
-    set(AARCH_DIR ${CMAKE_SYSTEM_PROCESSOR})
+    set(AARCH_DIR ${CMAKE_VS_PLATFORM_NAME})
 elseif (LINUX)
     set(SYSTEM_DIR "linux")
     set(AARCH_DIR ${CMAKE_SYSTEM_PROCESSOR})
@@ -28,7 +28,7 @@ set_target_properties(FIBONACCI::info PROPERTIES
 if (WIN32)
     # Windows平台还需要设置dll对应的lib
     set_target_properties(FIBONACCI::info PROPERTIES
-        IMPORTED_LOCATION "${LIB_DIR}/info${CMAKE_SHARED_LIBRARY_SUFFIX}"
+        IMPORTED_IMPLIB "${LIB_DIR}/info${CMAKE_IMPORT_LIBRARY_SUFFIX}"
     )
 endif ()
 
