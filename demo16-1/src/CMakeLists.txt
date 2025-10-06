@@ -7,6 +7,10 @@ project(demo-16-1)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(MSVC)
+    add_compile_options(/utf-8)
+endif()
+
 # 这句是为了解决 boost 编译时没有使用PIC参数的问题
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -62,10 +66,6 @@ FetchContent_Declare(
 # 在执行 cmake --build ...
 # 这样的命令时 FetchContent_MakeAvailable 会执行编译行为
 FetchContent_MakeAvailable(boost)
-
-if(MSVC)
-    add_compile_options(/utf-8)
-endif()
 
 add_library(trans SHARED trans.cpp)
 
