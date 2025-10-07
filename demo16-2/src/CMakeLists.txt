@@ -12,7 +12,7 @@ if(MSVC)
 endif()
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-set(BUILD_SHARED_LIBS ON)
+set(BUILD_SHARED_LIBS OFF)
 
 include(FetchContent)
 

@@ -27,7 +27,7 @@ IF EXIST "%BUILD_DIR%" (
     RMDIR /s /q "%BUILD_DIR%"
 )
 
-cmake -B "%BUILD_DIR%" -S . -G "%VC_VERSION%" -A %ARCH_TYPE% -DCMAKE_BUILD_TYPE=%BUILD_TYPE%
+cmake -B "%BUILD_DIR%" -S src -G "%VC_VERSION%" -A %ARCH_TYPE% -DCMAKE_BUILD_TYPE=%BUILD_TYPE%
 IF %ERRORLEVEL% neq 0 (
     echo cmake创建项目失败
     goto end
