@@ -14,8 +14,6 @@ endif()
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(BUILD_SHARED_LIBS OFF)
 
-include(FetchContent)
-
 set(BOOST_INCLUDE_LIBRARIES "locale")
 
 # 直接使用 add_subdirectory 把第三方库(boost)包含进来
