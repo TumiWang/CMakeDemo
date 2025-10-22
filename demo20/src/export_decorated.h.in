@@ -1,0 +1,28 @@
+// 文件 src/export_decorated.h.in
+
+#ifndef @EXPORT_DECORATED@
+
+#ifdef USING_DYNAMIC_LIB
+    // 动态库
+    #ifdef _WIN32
+        // Windows
+        // 实际上使用 _WIN32 宏判断可能有问题，
+        // 更好的方法是使用cmake判断后定义 对应的宏。
+        #ifdef @EXPORT_MODULE_IMPL@
+            #define @EXPORT_DECORATED@ __declspec(dllexport)
+        #else
+            #define @EXPORT_DECORATED@ __declspec(dllimport)
+        #endif
+    #else
+        #if __has_attribute(visibility)
+            #define @EXPORT_DECORATED@ __attribute__((visibility("default")))
+        #else
+            #define @EXPORT_DECORATED@
+        #endif
+    #endif // _WIN32
+#else
+    // 静态库
+    #define @EXPORT_DECORATED@
+#endif // USING_DYNAMIC_LIB
+
+#endif // @EXPORT_DECORATED@
