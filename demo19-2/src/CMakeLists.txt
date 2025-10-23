@@ -11,6 +11,6 @@ pkg_check_modules(EVP REQUIRED libcrypto)
 add_executable(test main.cpp)
 
 
-target_include_directories(test PRIVATE ${EVP_STATIC_INCLUDE_DIRS})
+target_include_directories(test PRIVATE ${EVP_INCLUDE_DIRS})
 
-target_link_libraries(test PRIVATE ${EVP_STATIC_LDFLAGS})
+target_link_libraries(test PRIVATE ${EVP_LDFLAGS})
