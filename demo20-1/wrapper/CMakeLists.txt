@@ -10,5 +10,4 @@ target_include_directories(
 
 target_compile_definitions(wrapper PRIVATE WRAPPER_IMPL)
 
-# PUBLIC 很重要
 target_link_libraries(wrapper PUBLIC info)
