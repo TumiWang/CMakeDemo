@@ -33,11 +33,6 @@ if [ $? != 0 ]; then
     exit 0
 fi
 
-# 和cmake --build一样
-# 如果是makefile或ninja等项目
-# 实际上不需要 --config $BUILD_TYPE 这个参数
-# 添加这个参数后，反而可能有警告 -- 因为这个参数没用
-# --prefix 这个参数是指定安装目录 -- 注意这里通常使用全路径
 cmake --install "$BUILD_DIR" --config $BUILD_TYPE --prefix "$ROOT_DIR/$PRODUCT_DIR"
 if [ $? != 0 ]; then
     echo "cmake安装失败"
