@@ -19,8 +19,6 @@ target_compile_definitions(wrapper PRIVATE WRAPPER_IMPL)
 
 target_link_libraries(wrapper PRIVATE info)
 
-# install(TARGETS wrapper $<$<PLATFORM_ID:Windows>:RUNTIME> DESTINATION .)
-
 if (WIN32)
     install(TARGETS wrapper RUNTIME DESTINATION .)
 else()

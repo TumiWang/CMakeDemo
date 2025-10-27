@@ -10,4 +10,8 @@ target_include_directories(
 
 target_compile_definitions(wrapper PRIVATE WRAPPER_IMPL)
 
-target_link_libraries(wrapper PUBLIC info)
+# 这里虽然使用了 PRIVATE
+# 但使用wrapper 的 test 还是会链接 info
+# 但如果 上面的 target_include_directories 使用 PRIVATE
+# 就会导致 test 在编译时，不能找的文件 wrapper.h
+target_link_libraries(wrapper PRIVATE info)
