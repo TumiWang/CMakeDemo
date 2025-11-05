@@ -12,6 +12,7 @@ target_link_libraries(wrapper PRIVATE info)
 set_target_properties(
     wrapper PROPERTIES
     # 修改了这句
+    # INSTALL_RPATH $<IF:$<PLATFORM_ID:Darwin>,@executable_path/../lib/lib,$ORIGIN/../lib/lib>
     INSTALL_RPATH $<IF:$<PLATFORM_ID:Darwin>,@loader_path/lib,$ORIGIN/../lib/lib>
 )
 
