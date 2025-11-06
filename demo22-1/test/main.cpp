@@ -1,4 +1,4 @@
-// 文件 test/info.cpp
+// 文件 test/main.cpp
 
 #include "info.h"
 
