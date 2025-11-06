@@ -1,4 +1,4 @@
-// 文件 info/info_unix.cpp
+// 文件 info/info_posix.cpp
 
 #include "info_inner.h"
 

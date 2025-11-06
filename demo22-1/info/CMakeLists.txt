@@ -4,8 +4,8 @@ set(INFO_SRC
     info.cpp
     # CYGWIN,MSYS,Windows,WindowsCE,WindowsPhone和WindowsStore
     # 都是Windows的编译环境
-    $<IF:$<PLATFORM_ID:CYGWIN,MSYS,Windows,WindowsCE,WindowsPhone,WindowsStore>,init_windows.cpp,init_unix.cpp>
-    # init_$<IF:$<PLATFORM_ID:CYGWIN,MSYS,Windows,WindowsCE,WindowsPhone,WindowsStore>,windows,unix>.cpp
+    $<IF:$<PLATFORM_ID:CYGWIN,MSYS,Windows,WindowsCE,WindowsPhone,WindowsStore>,init_windows.cpp,init_posix.cpp>
+    # init_$<IF:$<PLATFORM_ID:CYGWIN,MSYS,Windows,WindowsCE,WindowsPhone,WindowsStore>,windows,posix>.cpp
 )
 
 add_library(info SHARED ${INFO_SRC})
