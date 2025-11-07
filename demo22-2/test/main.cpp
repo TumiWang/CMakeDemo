@@ -25,6 +25,9 @@ int main(int argc, char* argv[]) {
     // 工作线程的工作
     auto thread_proc = [&]() {
         std::thread::id thread_id = std::this_thread::get_id();
+        // argv[0] 是当前进程文件
+        // 因为系统和启动方式的差异，它可能是相对路径或绝对路径
+        // 但注意：在Windows上，通常是GBK编码的
         std::string filename = GetInfoFullPath(argv[0]);
 
         rand_sleep();

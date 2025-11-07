@@ -8,6 +8,4 @@ set(TEST_SRC
 
 add_executable(test ${TEST_SRC})
 
-# target_link_libraries(test PUBLIC info)
-
 install(TARGETS test DESTINATION .)
