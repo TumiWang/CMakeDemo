@@ -2,5 +2,5 @@
 
 const char* GetName()
 {
-    return "C++幻想--Module2";
+    return "C++幻想 -- Module2";
 }

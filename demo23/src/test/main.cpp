@@ -6,7 +6,7 @@
 #include "module3/api.h"
 
 int main(int argc, char* argv[]) {
-    std::cout << "直接调用Module1: " << GetName() << std::endl;
-    std::cout << GetInfo() << std::endl;
+    std::cout << "调用GetName: " << GetName() << std::endl;
+    std::cout << "调用GetInfo: " << GetInfo() << std::endl;
     return 0;
 }
