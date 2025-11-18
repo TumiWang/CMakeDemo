@@ -38,3 +38,5 @@ if [ $? != 0 ]; then
     echo "cmake安装失败"
     exit 0
 fi
+
+"$ROOT_DIR/$PRODUCT_DIR/tar_sdk"

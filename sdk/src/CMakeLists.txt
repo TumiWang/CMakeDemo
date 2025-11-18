@@ -20,4 +20,11 @@ set(SOURCES
 add_executable(tar_sdk ${SOURCES})
 
 find_package(LibArchive)
-target_link_libraries(tar_sdk PUBLIC LibArchive::LibArchive)
+if (TARGET LibArchive::LibArchive)
+    target_link_libraries(tar_sdk PUBLIC LibArchive::LibArchive)
+else ()
+    target_include_directories(tar_sdk PUBLIC ${LibArchive_INCLUDE_DIRS})
+    target_link_libraries(tar_sdk PUBLIC ${LibArchive_LIBRARIES})
+endif ()
+
+install(TARGETS tar_sdk DESTINATION .)

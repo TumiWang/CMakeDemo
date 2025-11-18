@@ -12,6 +12,9 @@
 #include <string>
 #include <vector>
 
+#include <unistd.h>
+#include <limits.h>
+
 enum class LibType {
     link,
     lib,
@@ -80,6 +83,10 @@ int main() {
     filename += GetArch();
     filename += ".tar";
 
+    if (access(filename.c_str(), F_OK) == 0) {
+        unlink(filename.c_str());
+    }
+
     TarFile file(filename, "/");
 
     file.AddDir("usr");
@@ -106,6 +113,15 @@ int main() {
             break;
         }
     }
+
+    char cwd[PATH_MAX] = { 0 };
+    if (getcwd(cwd, sizeof(cwd))) {
+        std::string temp = cwd;
+        filename = temp + "/" + filename;
+    }
+
+
+    std::cout << "提取SDK到文件: " << filename << std::endl;
 
     return 0;
 }
