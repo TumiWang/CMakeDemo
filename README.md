@@ -31,3 +31,16 @@ sequenceDiagram
     M3-->>T: GetInfo返回
     deactivate M3
 ```
+
+# cross
+
+编译Windows时，docker 要提权运行，例如
+
+```sh
+docker run --rm -it --privileged -v /Users/tumi/source/github/CMakeDemo:/source clang18-cross-ubuntu24:aarch64 bash
+```
+
+MacOS可以合并
+```sh
+llvm-lipo-18 -create ./product/macos-aarch64/test ./product/macos-x86_64/test -output ./product/test
+```
