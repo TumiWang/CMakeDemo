@@ -35,7 +35,7 @@ set(CMAKE_LINKER "ld.lld" CACHE STRING "")
 
 # 静态库需要的工具
 set(CMAKE_AR "llvm-ar-18" CACHE STRING "")
-# set(CMAKE_RANLIB "llvm-ranlib-18" CACHE STRING "")
+set(CMAKE_RANLIB "llvm-ranlib-18" CACHE STRING "")
 
 # 资源编译工具
 set(CMAKE_RC_COMPILER "llvm-rc-18" CACHE STRING "")
