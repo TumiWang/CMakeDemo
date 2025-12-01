@@ -4,6 +4,8 @@
 
 #include <fcntl.h>
 
+#include <iostream>
+
 TarFile::TarFile(const std::string& filename, const std::string& path_prefix)
     : path_prefix_(path_prefix) {
     tarfile_ = archive_write_new();
