@@ -7,6 +7,5 @@ project(demo26)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(test main.cpp)
-
-install(TARGETS test DESTINATION .)
+add_subdirectory(cpp)
+add_subdirectory(resource)

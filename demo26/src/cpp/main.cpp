@@ -1,4 +1,4 @@
-// 文件 src/main.cpp
+// 文件 src/cpp/main.cpp
 
 #include <iostream>
 
