@@ -2,10 +2,12 @@
 
 cmake_minimum_required(VERSION 3.21)
 
-project(demo26)
+project(demo26 LANGUAGES C CXX OBJC OBJCXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(cpp)
-add_subdirectory(resource)
+# add_subdirectory(resource)
+
+add_subdirectory(gui)
