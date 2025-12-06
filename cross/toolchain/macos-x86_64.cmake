@@ -1,6 +1,6 @@
 # 交叉编译
-set(CMAKE_SYSTEM_NAME Darwin)
-set(CMAKE_SYSTEM_PROCESSOR x86_64)
+set(CMAKE_HOST_SYSTEM_NAME Darwin)
+set(CMAKE_HOST_SYSTEM_PROCESSOR x86_64)
 set(TARGET_TRIPLE x86_64-apple-darwin)
 
 # 指定使用Ninja
