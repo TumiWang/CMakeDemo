@@ -44,11 +44,11 @@ set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -static-libstdc++ -stdlib=libc
 set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -L${CMAKE_SYSROOT}/usr/lib/llvm-10/lib")
 set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -I${CMAKE_SYSROOT}/usr/lib/llvm-10/include/c++/v1")
 ```
-# demo26
+# demo26-1
 
 MacOS可以合并
 ```sh
-llvm-lipo-18 -create ./product/macos-aarch64/test ./product/macos-x86_64/test -output ./product/test
+llvm-lipo-18 -create ./product/macos/aarch64/test_cpp ./product/macos/x86_64/test_cpp -output ./product/test_cpp
 ```
 # demo27
 
