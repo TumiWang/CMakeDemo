@@ -1,5 +1,7 @@
 #import "AppDelegate.h"
 
+#import <CoreFoundation/CoreFoundation.h>
+
 @interface AppDelegate ()
 
 @property (strong) IBOutlet NSTextFieldCell *label;
@@ -9,12 +11,24 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+    CFBundleRef br = CFBundleGetMainBundle();
+    CFURLRef url = CFBundleCopyResourceURL(br, CFSTR("mycontent.txt"), NULL, NULL);
+
+    if (!url) return;
+
+    // text 就是 文件 mycontent.txt 中的内容
+    // 这里指定的 mycontent.txt 使用的是UTF8
+    NSString* text = [NSString stringWithContentsOfURL: (__bridge NSURL *)url encoding: NSUTF8StringEncoding error: NULL];
+
+    CFRelease(url);
+
+    // 设置文本框的内容
+    [_label initTextCell: text];
 }
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+    
 }
 
 

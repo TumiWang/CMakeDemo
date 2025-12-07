@@ -6,7 +6,7 @@ cd $(dirname "$0")
 # 当前目录全路径
 ROOT_DIR=`pwd`
 
-PRODUCT_DIR=product/local
+PRODUCT_DIR=product/macos
 BUILD_DIR=build
 BUILD_TYPE=Release
 
