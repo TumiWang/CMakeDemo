@@ -1,4 +1,4 @@
-# 文件 rebuild.sh
+# 文件 rebuild-ubuntu20_04-aarch64.sh
 
 # 进入当今脚本所在目录
 cd $(dirname "$0")
