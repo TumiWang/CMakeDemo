@@ -42,8 +42,6 @@ import sys
 import tempfile
 import zipfile
 
-import get_toolchain_if_necessary
-
 _vs_version = None
 _win_version = None
 _vc_tools = None
@@ -474,31 +472,6 @@ def AddEnvSetup(files, include_arm):
         print(_vs_version, file=version)
     files.append((vs_version_file, 'VS_VERSION'))
 
-
-def RenameToSha1(output):
-    """Determine the hash in the same way that the unzipper does to rename the
-    # .zip file."""
-    print('Extracting to determine hash...')
-    tempdir = tempfile.mkdtemp()
-    old_dir = os.getcwd()
-    os.chdir(tempdir)
-    rel_dir = 'vs_files'
-    with zipfile.ZipFile(os.path.join(old_dir, output), 'r',
-                         zipfile.ZIP_DEFLATED, True) as zf:
-        zf.extractall(rel_dir)
-    print('Hashing...')
-    sha1 = get_toolchain_if_necessary.CalculateHash(rel_dir, None)
-    # Shorten from forty characters to ten. This is still enough to avoid
-    # collisions, while being less unwieldy and reducing the risk of MAX_PATH
-    # failures.
-    sha1 = sha1[:10]
-    os.chdir(old_dir)
-    shutil.rmtree(tempdir)
-    final_name = sha1 + '.zip'
-    os.rename(output, final_name)
-    print('Renamed %s to %s.' % (output, final_name))
-
-
 def main():
     usage = 'usage: %prog [options] 2022'
     parser = optparse.OptionParser(usage)
@@ -628,8 +601,6 @@ def main():
         raise Exception('No files found that match the specified winversion')
     sys.stdout.write('\rWrote to %s.%s\n' % (output, ' ' * 50))
     sys.stdout.flush()
-
-    RenameToSha1(output)
 
     return 0
 
