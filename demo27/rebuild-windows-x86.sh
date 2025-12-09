@@ -12,7 +12,7 @@ BUILD_TYPE=Release
 
 # 工具链文件使用绝对路径
 # 如果使用相对路径，相对的目录是 $BUILD_DIR
-TOOLCHAIN_FILE=$ROOT_DIR/toolchain/windows-x86.cmake
+TOOLCHAIN_FILE=$ROOT_DIR/toolchain/windows-x86-clang19.cmake
 
 # 挂载Windowws SDK
 if ! mount | grep  -q "/sdk/winsdk type fuse.ciopfs"; then
@@ -20,7 +20,7 @@ if ! mount | grep  -q "/sdk/winsdk type fuse.ciopfs"; then
         rm -rf /sdk/winsdk
     fi
     mkdir /sdk/winsdk
-    ciopfs -o use_ino /sdk/Win10.0.22621.0 /sdk/winsdk
+    ciopfs -o use_ino /sdk/vc14.44_win10.0.26100 /sdk/winsdk
 fi
 
 if [ -d "$BUILD_DIR" ]; then
