@@ -21,11 +21,12 @@ windows SDK 的默认版本是 10.0.26100.0
 默认安装
 
 ```bat
-VisualStudioSetup.exe \
-    --add Microsoft.VisualStudio.Workload.NativeDesktop \
-    --add Microsoft.VisualStudio.Component.VC.ATLMFC \
-    --add Microsoft.VisualStudio.Component.VC.Tools.ARM64 \
-    --add Microsoft.VisualStudio.Component.VC.MFC.ARM64 \
+VisualStudioSetup.exe^
+    --channelUri https://aka.ms/vs/17/release/channel^
+    --add Microsoft.VisualStudio.Workload.NativeDesktop^
+    --add Microsoft.VisualStudio.Component.VC.ATLMFC^
+    --add Microsoft.VisualStudio.Component.VC.Tools.ARM64^
+    --add Microsoft.VisualStudio.Component.VC.MFC.ARM64^
     --includeRecommended --passive
 ```
 
