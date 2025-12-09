@@ -31,19 +31,18 @@ VisualStudioSetup.exe \
 
 ## 选择更新通道
 
---channelId <ID>
+--channelUri <URI>
 
-ID 的有效值
-+ VisualStudio.18.Stable
-  Visual Studio 2026 
-+ VisualStudio.17.Release
+URI 的有效值
++ https://aka.ms/vs/stable/channel
+  Visual Studio 2026 稳定版
++ https://aka.ms/vs/insiders/channel
+  Visual Studio 2026 内部版
++ https://aka.ms/vs/17/release/channel
   Visual Studio 2022
-+ VisualStudio.16.Release
++ https://aka.ms/vs/16/release/channel
   Visual Studio 2019
-+ VisualStudio.15.Release
++ https://aka.ms/vs/15/release/channel
   Visual Studio 2017
 
-## 选择更新的产品
-
-例如：--productID Microsoft.VisualStudio.Product.Enterprise
-就是 Visual Studio Enterprise
+https://learn.microsoft.com/zh-cn/visualstudio/install/command-line-parameter-examples?view=visualstudio#using---channeluri
