@@ -11,5 +11,7 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmd
     // 而上面的API要求的是 多字节编码
     // 实际上 多字节编码不是一种编码方式，在Windows平台，通常是指所在地区的编码方式
     // 国内的通常是GBK编码 更多介绍看我之前关于编码的介绍吧
+    // 另: 这里多字节编码的编码名称是 ANSI
+    // ANSI 和 ASCII 别混淆了
     return MessageBoxW(NULL, L"我是C++幻想", L"demo27", MB_OK | MB_ICONINFORMATION);
 }
