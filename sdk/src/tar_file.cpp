@@ -4,7 +4,82 @@
 
 #include <fcntl.h>
 
+#include <list>
+#include <sstream>
 #include <iostream>
+
+namespace {
+    std::list<std::string> SplitFullPath(const std::string& fullpath) {
+        std::list<std::string> result;
+
+        auto pos = fullpath.find('\'');
+        if (pos != std::string::npos) {
+            return result;
+        }
+        pos = fullpath.find('\"');
+        if (pos != std::string::npos) {
+            return result;
+        }
+        auto begin_itor = fullpath.cbegin();
+        auto cur_itor = begin_itor;
+        while (cur_itor != fullpath.cend()) {
+            if (*cur_itor == '/') {
+                std::string temp(begin_itor, cur_itor);
+                begin_itor = ++cur_itor;
+
+                if (!temp.empty()) result.push_back(temp);
+            } else {
+                ++cur_itor;
+            }
+        }
+
+        if (cur_itor == fullpath.cend() && begin_itor != cur_itor) {
+            std::string temp(begin_itor, cur_itor);
+            if (!temp.empty()) result.push_back(temp);
+        }
+
+        return result;
+    }
+
+    bool CalcRelativeName(const std::string& link, std::string& filename) {
+        do {
+            std::list<std::string> src = SplitFullPath(link);
+            if (src.empty()) break;
+
+            std::list<std::string> dest = SplitFullPath(filename);
+            if (dest.empty()) break;
+
+            auto src_iter = src.begin();
+            auto dest_iter = dest.begin();
+
+            while(src_iter != src.end() && dest_iter != dest.end()) {
+                if (*src_iter == *dest_iter) {
+                    src_iter = src.erase(src_iter);
+                    dest_iter = dest.erase(dest_iter);
+                } else {
+                    break;
+                }
+            }
+
+            if (src.empty()) break;
+            if (dest.empty()) break;
+
+            std::ostringstream os;
+
+            for (int i = 0; i < src.size() - 1; ++i)
+                os << "/..";
+
+            for (auto iter = dest.begin(); iter != dest.end(); ++iter)
+                os << "/" << *iter;
+
+            filename = os.str();
+
+            return true;
+        } while(false);
+
+        return false;
+    }
+}
 
 TarFile::TarFile(const std::string& filename, const std::string& path_prefix)
     : path_prefix_(path_prefix) {
@@ -86,7 +161,9 @@ void TarFile::AddLink(const std::string& link) {
     ssize_t bytes = readlink(filename.c_str(), buff, sizeof(buff));
     if (bytes <= 1) return;
     std::string text = buff;
-    if (text[0] == '/') return;
+    if (text[0] == '/') {
+        if (!CalcRelativeName(filename, text)) return;
+    }
 
     struct archive_entry* entry = archive_entry_new();
     archive_entry_copy_stat(entry, &st);
