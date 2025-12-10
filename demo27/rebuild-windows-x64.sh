@@ -12,7 +12,7 @@ BUILD_TYPE=Release
 
 # 工具链文件使用绝对路径
 # 如果使用相对路径，相对的目录是 $BUILD_DIR
-TOOLCHAIN_FILE=$ROOT_DIR/toolchain/windows-x64-clang19.cmake
+TOOLCHAIN_FILE=$ROOT_DIR/toolchain/windows-x64.cmake
 
 # 挂载Windowws SDK
 if ! mount | grep  -q "/sdk/winsdk type fuse.ciopfs"; then

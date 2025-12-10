@@ -11,33 +11,40 @@ set(CMAKE_SYSROOT /sdk/winsdk)
 
 set(CMAKE_C_FLAGS_INIT "${CMAKE_C_FLAGS_INIT} -fuse-ld=lld")
 set(CMAKE_C_FLAGS_INIT "${CMAKE_C_FLAGS_INIT} -Wno-unused-command-line-argument")
-set(CMAKE_C_FLAGS_INIT "${CMAKE_C_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/windows kits/10/lib/10.0.22621.0/um/x64\"")
-set(CMAKE_C_FLAGS_INIT "${CMAKE_C_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/windows kits/10/lib/10.0.22621.0/ucrt/x64\"")
-set(CMAKE_C_FLAGS_INIT "${CMAKE_C_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/vc/tools/msvc/14.16.27023/lib/onecore/x64\"")
+set(CMAKE_C_FLAGS_INIT "${CMAKE_C_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/windows kits/10/lib/10.0.26100.0/um/x64\"")
+set(CMAKE_C_FLAGS_INIT "${CMAKE_C_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/windows kits/10/lib/10.0.26100.0/ucrt/x64\"")
+set(CMAKE_C_FLAGS_INIT "${CMAKE_C_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/vc/tools/msvc/14.44.35207/lib/onecore/x64\"")
 
 set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -fuse-ld=lld")
 set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -Wno-unused-command-line-argument")
 set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -Wno-c++11-narrowing")
-set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/windows kits/10/lib/10.0.22621.0/um/x64\"")
-set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/windows kits/10/lib/10.0.22621.0/ucrt/x64\"")
-set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/vc/tools/msvc/14.16.27023/lib/onecore/x64\"")
-set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -I\"${CMAKE_SYSROOT}/windows kits/10/include/10.0.22621.0/ucrt\"")
+set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -Wno-ignored-attributes -Wno-pragma-pack -Wno-ignored-pragma-intrinsic -Wno-nonportable-include-path")
+set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/windows kits/10/lib/10.0.26100.0/um/x64\"")
+set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/windows kits/10/lib/10.0.26100.0/ucrt/x64\"")
+set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -L\"${CMAKE_SYSROOT}/vc/tools/msvc/14.44.35207/lib/x64\"")
+set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -I\"${CMAKE_SYSROOT}/vc/tools/msvc/14.44.35207/include\"")
+set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -I\"${CMAKE_SYSROOT}/windows kits/10/include/10.0.26100.0/shared\"")
+set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -I\"${CMAKE_SYSROOT}/windows kits/10/include/10.0.26100.0/um\"")
+set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -I\"${CMAKE_SYSROOT}/windows kits/10/include/10.0.26100.0/ucrt\"")
 set(CMAKE_CXX_FLAGS_INIT "${CMAKE_CXX_FLAGS_INIT} -I\"${CMAKE_SYSROOT}/windows kits/10/bin/x64/include\"")
 
-set(CMAKE_C_COMPILER clang)
-set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_RC_FLAGS_INIT "${CMAKE_RC_FLAGS_INIT} -I\"${CMAKE_SYSROOT}/windows kits/10/include/10.0.26100.0/shared\"")
+set(CMAKE_RC_FLAGS_INIT "${CMAKE_RC_FLAGS_INIT} -I\"${CMAKE_SYSROOT}/windows kits/10/include/10.0.26100.0/um\"")
+
+set(CMAKE_C_COMPILER /usr/lib/llvm-19/bin/clang)
+set(CMAKE_CXX_COMPILER /usr/lib/llvm-19/bin/clang++)
 
 set(CMAKE_C_COMPILER_TARGET ${TARGET_TRIPLE})
 set(CMAKE_CXX_COMPILER_TARGET ${TARGET_TRIPLE})
 
-set(CMAKE_LINKER "ld.lld" CACHE STRING "")
+set(CMAKE_LINKER "/usr/lib/llvm-19/bin/ld.lld" CACHE STRING "")
 
 # 静态库需要的工具
-set(CMAKE_AR "llvm-ar-18" CACHE STRING "")
-set(CMAKE_RANLIB "llvm-ranlib-18" CACHE STRING "")
+set(CMAKE_AR "/usr/lib/llvm-19/bin/llvm-ar" CACHE STRING "")
+set(CMAKE_RANLIB "/usr/lib/llvm-19/bin/llvm-ranlib" CACHE STRING "")
 
 # 资源编译工具
-set(CMAKE_RC_COMPILER "llvm-rc-18" CACHE STRING "")
+set(CMAKE_RC_COMPILER "/usr/lib/llvm-19/bin/llvm-rc" CACHE STRING "")
 
 # 下面通常不需要设置
 add_compile_definitions(__WIN32__)

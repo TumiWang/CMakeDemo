@@ -1,11 +1,15 @@
 #pragma code_page(65001)
 
+#include "resource.h"
+
 #define APSTUDIO_READONLY_SYMBOLS
 #include "winres.h"
 #undef APSTUDIO_READONLY_SYMBOLS
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+IDR_MYCONTENT       TXT         "mycontent.txt"
 
 VS_VERSION_INFO VERSIONINFO
  FILEVERSION 1,0,0,0
