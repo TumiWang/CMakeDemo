@@ -66,7 +66,8 @@ namespace {
 
             std::ostringstream os;
 
-            for (int i = 0; i < src.size() - 1; ++i)
+            os << "..";
+            for (int i = 1; i < src.size() - 1; ++i) 
                 os << "/..";
 
             for (auto iter = dest.begin(); iter != dest.end(); ++iter)
