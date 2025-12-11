@@ -17,28 +17,8 @@ LibDetect::LibDetect(TarFile& tar_file, const std::string& dir_prefix, const std
 }
 
 void LibDetect::OnDetectDir(const std::string& dir) {
-    // static const std::vector<std::string> lists = {
-    //     "cmake",
-    //     "gcc",
-    //     "pkgconfig"
-    // };
-    // bool need_insert = false;
-    // for (const auto& item: lists) {
-    //     if (dir == item) {
-    //         need_insert = true;
-    //         break;
-    //     }
-    // }
-    // if (!need_insert) {
-    //     auto pos = dir.find(GetArch());
-    //     if (pos == 0) need_insert = true;
-    // }
-    // if (need_insert) {
-    //     tar_file_.AddDir(cur_dir_ + dir);
-
-    //     InsertAll insert(tar_file_, dir_prefix_, cur_dir_ + dir);
-    //     insert.Detect();
-    // }
+    if (MatchBlacklistPrefix(dir)) return;
+    
     if (MatchLibPrefix(dir)) {
         tar_file_.AddDir(cur_dir_ + dir);
 

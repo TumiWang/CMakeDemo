@@ -1,5 +1,7 @@
 #include "insert_all.h"
 
+#include "info.h"
+
 InsertAll::InsertAll(TarFile& tar_file, const std::string& dir_prefix, const std::string& dir)
     : DirDetect(dir_prefix + dir), dir_prefix_(dir_prefix), tar_file_(tar_file) {
     if (dir.empty() || dir[dir.size() - 1] == '/') {
@@ -12,6 +14,8 @@ InsertAll::InsertAll(TarFile& tar_file, const std::string& dir_prefix, const std
 }
 
 void InsertAll::OnDetectDir(const std::string& dir) {
+    if (MatchBlacklistPrefix(dir)) return;
+
     tar_file_.AddDir(cur_dir_ + dir);
 
     InsertAll insert(tar_file_, dir_prefix_, cur_dir_ + dir);

@@ -86,7 +86,7 @@ TarFile::TarFile(const std::string& filename, const std::string& path_prefix)
     : path_prefix_(path_prefix) {
     tarfile_ = archive_write_new();
     archive_write_set_format_pax_restricted(tarfile_);
-    // archive_write_set_compression_none(tarfile_);
+    archive_write_set_compression_none(tarfile_);
     archive_write_add_filter_none(tarfile_);
     archive_write_set_format_ustar(tarfile_);
 
@@ -113,10 +113,6 @@ void TarFile::AddDir(const std::string& dir) {
     archive_entry_set_perm(entry, 0755);
     archive_entry_set_size(entry, 0);
     int ret = archive_write_header(tarfile_, entry);
-    // if (ret != ARCHIVE_OK) {
-    //     std::cout << "archive_write_header Failed: " << filename << std::endl;
-    //     exit(1);
-    // }
     archive_write_finish_entry(tarfile_);
     archive_entry_free(entry);
 }
@@ -130,23 +126,11 @@ void TarFile::AddFile(const std::string& filename) {
     archive_entry_copy_stat(entry, &st);
     archive_entry_set_pathname(entry, filename.c_str());
     int ret = archive_write_header(tarfile_, entry);
-    // if (ret != ARCHIVE_OK) {
-    //     std::cout << "archive_write_header Failed: " << filename << std::endl;
-    //     exit(1);
-    // }
     int fd = open(fullname.c_str(), O_RDONLY);
-    // if (fd < 0) {
-    //     std::cout << "open Failed: " << filename << std::endl;
-    //     exit(1);
-    // }
     char buff[10240];
     size_t bytes;
     while((bytes = read(fd, buff, sizeof(buff))) > 0 ) {
         ret = archive_write_data(tarfile_, buff, bytes);
-        // if (ret != bytes) {
-        //     std::cout << "archive_entry_data Failed: " << " --- " << filename << std::endl;
-        //     exit(1);
-        // }
     }
     close(fd);
     archive_write_finish_entry(tarfile_);

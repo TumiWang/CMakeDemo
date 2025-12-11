@@ -6,5 +6,6 @@
 
 const std::string& GetArch();
 bool MatchLibPrefix(const std::string& name);
+bool MatchBlacklistPrefix(const std::string& name);
 
 #endif // __INFO_H_
