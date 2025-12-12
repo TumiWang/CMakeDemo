@@ -59,3 +59,25 @@ llvm-lipo-18 -create ./product/macos/aarch64/test_cpp ./product/macos/x86_64/tes
 ```sh
 docker run --rm -it --privileged -v /Users/tumi/source/github/CMakeDemo:/source clang18-cross-ubuntu24:aarch64 bash
 ```
+
+# demo28
+
+安装 libc++ 库
+
+llvm源配置: https://apt.llvm.org/
+
+```dockerfile
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get -y update
+RUN apt-get -y install wget
+RUN wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+RUN echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-19 main" >> /etc/apt/sources.list
+RUN apt-get -y update
+RUN apt-get -y install libc++-19-dev
+RUN apt-get -y install cmake
+RUN apt-get -y install libarchive-dev
+RUN apt-get -y clean
+```
