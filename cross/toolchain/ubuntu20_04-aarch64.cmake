@@ -1,6 +1,6 @@
 # 交叉编译
-set(CMAKE_HOST_SYSTEM_NAME Linux)
-set(CMAKE_HOST_SYSTEM_PROCESSOR aarch64)
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR aarch64)
 set(TARGET_TRIPLE aarch64-linux-gnueabihf)
 
 # 指定使用Ninja
