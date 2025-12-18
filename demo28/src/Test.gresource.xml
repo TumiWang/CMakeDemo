@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/test/cxx/demo28">
+        <!--可以有多个file节点，就添加了多个资源文件-->
+        <file>content.txt</file>
+    </gresource>
+</gresources>
