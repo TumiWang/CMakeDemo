@@ -37,8 +37,6 @@ set(CMAKE_CXX_COMPILER /usr/lib/llvm-19/bin/clang++)
 set(CMAKE_C_COMPILER_TARGET ${TARGET_TRIPLE})
 set(CMAKE_CXX_COMPILER_TARGET ${TARGET_TRIPLE})
 
-set(CMAKE_LINKER "/usr/lib/llvm-19/bin/ld.lld" CACHE STRING "")
-
 # 静态库需要的工具
 set(CMAKE_AR "/usr/lib/llvm-19/bin/llvm-ar" CACHE STRING "")
 set(CMAKE_RANLIB "/usr/lib/llvm-19/bin/llvm-ranlib" CACHE STRING "")
