@@ -20,9 +20,6 @@ std::string GetContent()
     // 函数的前缀 Test 实际上就是那个文件的名称
     GResource* r = Test_get_resource();
 
-    // 资源要先注册后，才能使用
-    g_resources_register(r);
-
     // 这里的文件名称 /test/cxx/demo28/content.txt
     // 就是资源文件的名称 由 
     //   前缀 /test/cxx/demo28
@@ -36,9 +33,6 @@ std::string GetContent()
 
     // 释放 buffer
     g_bytes_unref(buffer);
-
-    // g_resources_register 的逆操作
-    g_resources_unregister(r);
 
     return text;
 }
