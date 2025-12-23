@@ -12,8 +12,9 @@ set(CMAKE_SYSROOT /sdk/ubuntu20-aarch64)
 set(CMAKE_C_FLAGS_INIT "-fuse-ld=lld -Wno-unused-command-line-argument")
 set(CMAKE_CXX_FLAGS_INIT "-fuse-ld=lld -Wno-c++11-narrowing  -Wno-unused-command-line-argument")
 
-# 这句很重要 -- 配置 pkg-config 工具的查找目录
-set(ENV{PKG_CONFIG_PATH} "${CMAKE_SYSROOT}/usr/share/pkgconfig:${CMAKE_SYSROOT}/usr/lib/pkgconfig:${CMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig")
+# 这句很重要 -- 配置 pkg-config 工具
+set(ENV{PKG_CONFIG_LIBDIR} "${CMAKE_SYSROOT}/usr/share/pkgconfig:${CMAKE_SYSROOT}/usr/lib/pkgconfig:${CMAKE_SYSROOT}/usr/lib/aarch64-linux-gnu/pkgconfig")
+set(ENV{PKG_CONFIG_SYSROOT_DIR} ${CMAKE_SYSROOT})
 
 set(CMAKE_C_COMPILER clang-19)
 set(CMAKE_CXX_COMPILER clang++-19)

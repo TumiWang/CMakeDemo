@@ -49,21 +49,13 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(GIO2 REQUIRED gio-2.0)
 
 add_executable(test main.cpp ${CMAKE_CURRENT_BINARY_DIR}/${GRC_C})
-target_include_directories(test PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(
+    test PRIVATE
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${GIO2_INCLUDE_DIRS}
+)
 
-if(CMAKE_CROSSCOMPILING)
-    # 在交叉编译时，要注意原来提供的 库 gio-2.0 头文件和库文件的目录都需要修改
-    foreach(head_dir ${GIO2_INCLUDE_DIRS})
-        target_include_directories(test PRIVATE ${CMAKE_SYSROOT}${head_dir})
-    endforeach()
-    foreach(lib_dir ${GIO2_LIBRARY_DIRS})
-        target_link_directories(test PRIVATE ${CMAKE_SYSROOT}${lib_dir})
-    endforeach()
-    target_link_libraries(test PRIVATE ${GIO2_LIBRARIES})
-else()
-    target_include_directories(test PRIVATE ${GIO2_INCLUDE_DIRS})
-    target_link_libraries(test PRIVATE ${GIO2_LDFLAGS})
-endif()
+target_link_libraries(test PRIVATE ${GIO2_LDFLAGS})
 
 # 上面定义 目标XML_RC 就是为了这里建立依赖关系
 add_dependencies(test XML_RC)
