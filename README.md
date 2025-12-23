@@ -62,6 +62,22 @@ docker run --rm -it --privileged -v /Users/tumi/source/github/CMakeDemo:/source 
 
 # demo28
 
+编译环境和提取SDK
+安装 glib-compile-resources
+```sh
+apt-get install libglib2.0-dev
+```
+
+运行环境
+```sh
+apt-get install libglib2.0-0
+```
+
+ubuntu 20.04 默认的libglib 版本是 2.64
+ubuntu 24.04 默认的libglib 版本是 2.80
+
+# demo29
+
 安装 libc++ 库
 
 llvm源配置: https://apt.llvm.org/
@@ -76,8 +92,30 @@ RUN apt-get -y install wget
 RUN wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 RUN echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-19 main" >> /etc/apt/sources.list
 RUN apt-get -y update
-RUN apt-get -y install libc++-19-dev
+RUN apt-get -y install build-essential
 RUN apt-get -y install cmake
 RUN apt-get -y install libarchive-dev
+RUN apt-get -y install libc++-19-dev
+RUN apt-get -y clean
+```
+
+```dockerfile
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# arm64/v8(即aarch64) 的docker镜像 apt-get install 遇到了问题
+# 添加
+# RUN rm /var/lib/dpkg/info/libc-bin.*
+# 在这个位置
+RUN apt-get -y update
+RUN apt-get -y install wget
+RUN wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+RUN echo "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-19 main" >> /etc/apt/sources.list
+RUN apt-get -y update
+RUN apt-get -y install build-essential
+RUN apt-get -y install cmake
+RUN apt-get -y install libarchive-dev
+RUN apt-get -y install libc++-19-dev
 RUN apt-get -y clean
 ```
