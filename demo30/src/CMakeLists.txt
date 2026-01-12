@@ -13,9 +13,8 @@ check_cxx_source_compiles(
 # 结果放在变量 COMPLETED_STDLIBCXX 中
 "
 #include <thread>
-int main() { 
-    int i = 0;
-    std::thread t([&] {++i;});
+int main() {
+    std::thread t([] {});
 }
 " 
 COMPLETED_STDLIBCXX)
