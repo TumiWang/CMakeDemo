@@ -86,7 +86,7 @@ TarFile::TarFile(const std::string& filename, const std::string& path_prefix)
     : path_prefix_(path_prefix) {
     tarfile_ = archive_write_new();
     archive_write_set_format_pax_restricted(tarfile_);
-    archive_write_set_compression_none(tarfile_);
+    // archive_write_set_compression_none(tarfile_);
     archive_write_add_filter_none(tarfile_);
     archive_write_set_format_ustar(tarfile_);
 

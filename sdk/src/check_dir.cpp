@@ -4,11 +4,14 @@
 
 namespace {
 const std::vector<std::string> header_paths_ = {
-    "include"
+    "include",
+    "ssl"
 };
 
 const std::vector<std::string> lib_paths_ = {
     "lib",
+    "lib32",
+    "libx32",
     "lib64",
     "share"
 };
@@ -16,18 +19,18 @@ const std::vector<std::string> lib_paths_ = {
 }
 
 CheckDir::CheckDir(const std::string& dir,
-        std::function<void(const std::string&)> on_header,
+        std::function<void(const std::string&)> on_res,
         std::function<void(const std::string&)> on_lib,
         std::function<void(const std::string&)> on_link)
     : DirDetect(dir),
-      on_header_(on_header), on_lib_(on_lib), on_link_(on_link) {
+      on_res_(on_res), on_lib_(on_lib), on_link_(on_link) {
 
 }
 
 void CheckDir::OnDetectDir(const std::string& dir) {
     for (const auto& item: header_paths_) {
         if (dir == item) {
-            on_header_(full_path_ + dir);
+            on_res_(full_path_ + dir);
             return;
         }
     }

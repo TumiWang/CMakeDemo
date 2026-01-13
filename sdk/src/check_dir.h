@@ -8,7 +8,7 @@
 class CheckDir: public DirDetect {
 public:
     CheckDir(const std::string& dir,
-        std::function<void(const std::string&)> on_header,
+        std::function<void(const std::string&)> on_res,
         std::function<void(const std::string&)> on_lib,
         std::function<void(const std::string&)> on_link);
 
@@ -18,7 +18,7 @@ protected:
     void OnDetectFile(const std::string& file) override;
 
 private:
-    std::function<void(const std::string&)> on_header_;
+    std::function<void(const std::string&)> on_res_;
     std::function<void(const std::string&)> on_lib_;
     std::function<void(const std::string&)> on_link_;
 };

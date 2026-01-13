@@ -18,7 +18,7 @@
 enum class LibType {
     link,
     lib,
-    header
+    res
 };
 
 struct ItemInfo {
@@ -47,7 +47,7 @@ int main() {
     // };
     std::vector<ItemInfo> items;
     auto header_cb = [&items](const std::string& dir) {
-        items.push_back({dir, LibType::header});
+        items.push_back({dir, LibType::res});
     };
     auto lib_cb = [&items](const std::string& dir) {
         items.push_back({dir, LibType::lib});
@@ -61,23 +61,19 @@ int main() {
         check.Detect();
     }
 
-    {
+    bool has_usr = false;
+    if (access("/usr", F_OK) == 0) {
         CheckDir check("/usr", header_cb, lib_cb, link_cb);
         check.Detect();
+        has_usr = true;
     }
 
-    // std::cout << "头文件目录:" << std::endl;
-    // for (const auto& item: header_paths) {
-    //     std::cout << item << std::endl;
-    // }
-    // std::cout << std::endl;
-    // std::cout << "库文件目录:" << std::endl;
-    // for (const auto& item: lib_paths)
-    //     std::cout << item << std::endl;
-    // std::cout << std::endl;
-    // std::cout << "链接文件:" << std::endl;
-    // for (const auto& item: link_paths)
-    //     std::cout << item << std::endl;
+    bool has_usr_local = false;
+    if (access("/usr/local", F_OK) == 0) {
+        CheckDir check("/usr/local", header_cb, lib_cb, link_cb);
+        check.Detect();
+        has_usr_local = true;
+    }
 
     std::string filename = "linux-sdk-";
     filename += GetArch();
@@ -89,7 +85,8 @@ int main() {
 
     TarFile file(filename, "/");
 
-    file.AddDir("usr");
+    // if (has_usr) file.AddDir("usr");
+    // if (has_usr_local) file.AddDir("usr/local");
 
     for (const auto& item: items) {
         switch (item.type)
@@ -103,7 +100,7 @@ int main() {
         case LibType::link:
             file.AddLink(item.filename.substr(1));
             break;
-        case LibType::header:
+        case LibType::res:
             if (item.filename.size() > 1 && item.filename[0] == '/') {
                 InsertAll insert(file, "/", item.filename.substr(1));
                 insert.Detect();
