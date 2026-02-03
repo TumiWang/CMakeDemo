@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 3.16)
 
 project(demo33-4)
 
+if(MSVC)
+    add_compile_options(/utf-8)
+endif()
+
 add_library(fibonacci SHARED fibonacci.cpp)
 
 target_include_directories(fibonacci

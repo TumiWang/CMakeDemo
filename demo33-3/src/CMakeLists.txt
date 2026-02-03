@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 3.16)
 
 project(demo33-3)
 
+if(MSVC)
+    add_compile_options(/utf-8)
+endif()
+
 include(CTest)
 include(GoogleTest)
 

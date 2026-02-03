@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 3.16)
 
 project(demo33-2)
 
+if(MSVC)
+    add_compile_options(/utf-8)
+endif()
+
 include(CTest)
 
 add_executable(demo32 main.cpp)
