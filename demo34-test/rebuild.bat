@@ -37,6 +37,6 @@ IF EXIST "%PRUDOCT_DIR%" (
 
 cmake -B "%BUILD_DIR%" -S src -G "%VC_VERSION%" -A %ARCH_TYPE% -DCMAKE_BUILD_TYPE=%BUILD_TYPE%
 
-cmake --build "%BUILD_DIR%"
+cmake --build "%BUILD_DIR%" --config %BUILD_TYPE%
 
-cmake --install "%BUILD_DIR%" --prefix "%ROOT_DIR%\\%PRUDOCT_DIR%"
+cmake --install "%BUILD_DIR%" --config %BUILD_TYPE% --prefix "%ROOT_DIR%\\%PRUDOCT_DIR%"

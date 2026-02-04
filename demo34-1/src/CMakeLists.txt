@@ -24,8 +24,12 @@ add_library(fibonacci SHARED fibonacci.cpp)
 set_target_properties(fibonacci PROPERTIES VERSION ${FibonacciMajorVersion}.${FibonacciMinorVersion}.${FibonacciPatchVersion})
 
 # 安装编译目标
-# install(TARGETS fibonacci)
-install(TARGETS fibonacci EXPORT FibonacciConfig)
+install(TARGETS fibonacci 
+    EXPORT FibonacciConfig
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    INCLUDES DESTINATION include)
 
 # 安装头文件
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/fibonacci.h TYPE INCLUDE)
@@ -41,7 +45,7 @@ install(
 # CPack 基础配置
 
 # 包名称
-set(CPACK_PACKAGE_NAME "FibonacciCalc")
+set(CPACK_PACKAGE_NAME "Fibonacci")
 
 # 安装许可
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/pack/InstallLicense.txt")
@@ -93,10 +97,10 @@ set(CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES")
 set(CPACK_NSIS_MODIFY_PATH OFF)
 
 # 安装程序图标
-# set(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/win_nsis/install.ico")
+set(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/win_nsis/install.ico")
 
 # 卸载程序图标
-# set(CPACK_NSIS_MUI_UNICON "${CMAKE_CURRENT_SOURCE_DIR}/win_nsis/install.ico")
+set(CPACK_NSIS_MUI_UNICON "${CMAKE_CURRENT_SOURCE_DIR}/win_nsis/install.ico")
 
 # 安装时执行安装目录的 init.bat
 # set(CPACK_NSIS_EXTRA_INSTALL "ExecWait $INSTDIR/init.bat")
