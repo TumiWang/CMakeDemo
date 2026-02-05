@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project(demo34-test)
+project(test)
 
 if(MSVC)
     add_compile_options(/utf-8)

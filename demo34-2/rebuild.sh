@@ -27,34 +27,4 @@ cmake --build "$BUILD_DIR"
 
 cd "$BUILD_DIR"
 
-# # 打包为 .tar.gz
-# # POSIX
-# cpack -G TGZ
-
-# # 打包为 .tar.xz
-# # POSIX
-# cpack -G TXZ
-
-# # 打包为 .deb
-# # Linux
-# cpack -G DEB
-
-# # 打包为 .rpm
-# # ubuntu 需要先运行安装工具 apt-get -y install rpm
-# # Linux
-# cpack -G RPM
-
-# # 打包为 .dmg 拖拽
-# # MacOS
-# # 拖拽安装应该是应用程序(有界面的), 所以，我们这个例子不合适
-# cpack DragNDrop
-
-# # 打包为 pkg
-# # MacOS
-# cpack -G productbuild
-
-# 打包为 .dmg
-# MacOS
-# cpack -G Bundle
-
-cpack -G productbuild -V
+cpack -G productbuild

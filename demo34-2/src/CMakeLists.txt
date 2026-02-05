@@ -1,10 +1,8 @@
 # 文件 src/CMakeLists.txt
 
-# c++ 源码 就是demo12-1
-
 cmake_minimum_required(VERSION 3.16)
 
-project(demo34)
+project(demo34-2)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -71,6 +69,11 @@ set(CPACK_PACKAGE_DESCRIPTION "计算菲波那契数列的动态库 这个是更
 
 include(CPack)
 
+# cpack_add_component 的第一个参数是上面 install 命令定义的
 cpack_add_component(libs DISPLAY_NAME "菲波那契动态库组件")
+# 头文件依赖库文件，否则只有头文件没用
+# 当然，也可以不设置这个条件
 cpack_add_component(headers DISPLAY_NAME "菲波那契库的头文件" DEPENDS libs)
+# cmake配置文件，依赖库文件和头文件
+# 因为依赖性，这里只写了头文件(它依赖库文件)
 cpack_add_component(cmake_configs DISPLAY_NAME "菲波那契动态库的cmake配置" DEPENDS headers)

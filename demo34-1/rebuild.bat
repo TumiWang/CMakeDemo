@@ -44,3 +44,5 @@ cmake --build "%BUILD_DIR%" --config %BUILD_TYPE%
 cd "%BUILD_DIR%"
 
 cpack -G NSIS
+
+:: cpack -G NSIS64

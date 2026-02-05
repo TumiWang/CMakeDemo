@@ -1,10 +1,8 @@
 # 文件 src/CMakeLists.txt
 
-# c++ 源码 就是demo12-1
-
 cmake_minimum_required(VERSION 3.16)
 
-project(demo34)
+project(demo34-1)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -71,9 +69,7 @@ set(CPACK_PACKAGE_CONTACT "mymail@test.com")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "计算菲波那契数列的动态库")
 set(CPACK_PACKAGE_DESCRIPTION "计算菲波那契数列的动态库 这个是更详细的描述")
 
-
-# tar.xz tar.gz 等
-set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
+# set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
 
 # Linux DEB
 
@@ -109,10 +105,10 @@ set(CPACK_NSIS_MUI_UNICON "${CMAKE_CURRENT_SOURCE_DIR}/win_nsis/install.ico")
 # set(CPACK_NSIS_EXTRA_UNINSTALL "ExecWait $INSTDIR/uninit.bat")
 
 
-# # MacOS Bundle 
-# set(CPACK_BUNDLE_NAME "Fibonacci Library")
-# set(CPACK_BUNDLE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/mac_bundle/CustomVolumeIcon.icns")
-# set(CPACK_BUNDLE_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/mac_bundle/Info.plist")
+# MacOS Bundle 
+set(CPACK_BUNDLE_NAME "Fibonacci Library")
+set(CPACK_BUNDLE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/mac_bundle/AppIcon.icns")
+set(CPACK_BUNDLE_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/mac_bundle/Info.plist")
 # set(CPACK_BUNDLE_STARTUP_COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/mac_bundle/StartupCommand")
 
 include(CPack)

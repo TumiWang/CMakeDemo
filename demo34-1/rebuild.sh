@@ -25,11 +25,12 @@ cmake --build "$BUILD_DIR"
 
 # cmake --install "$BUILD_DIR" --config $BUILD_TYPE --prefix "$ROOT_DIR/$PRODUCT_DIR"
 
-# cd "$BUILD_DIR"
+cd "$BUILD_DIR"
 
 # # 打包为 .tar.gz
 # # POSIX
 # cpack -G TGZ
+cpack -G TGZ -D CPACK_INCLUDE_TOPLEVEL_DIRECTORY=OFF
 
 # # 打包为 .tar.xz
 # # POSIX
@@ -47,7 +48,7 @@ cmake --build "$BUILD_DIR"
 # # 打包为 .dmg 拖拽
 # # MacOS
 # # 拖拽安装应该是应用程序(有界面的), 所以，我们这个例子不合适
-# cpack DragNDrop
+# cpack -G DragNDrop
 
 # # 打包为 pkg
 # # MacOS
