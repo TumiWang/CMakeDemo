@@ -1,0 +1,193 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "release",
+            "displayName": "Release配置",
+            "description": "Release的基础配置",
+            "hidden": true,
+            "binaryDir": "${sourceParentDir}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": {
+                    "type": "STRING",
+                    "value": "Release"
+                }
+            }
+        },
+        {
+            "name": "linux",
+            "inherits": "release",
+            "generator": "Unix Makefiles"
+        },
+        {
+            "name": "vs2017",
+            "inherits": "release",
+            "generator": "Visual Studio 15 2017",
+            "toolset": "win32"
+        },
+        {
+            "name": "vs2022",
+            "inherits": "release",
+            "generator": "Visual Studio 17 2022",
+            "toolset": "win32"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "linux",
+            "configurePreset": "linux"
+        },
+        {
+            "name": "vs2017",
+            "configurePreset": "vs2017",
+            "configuration": "Release"
+        },
+        {
+            "name": "vs2022",
+            "configurePreset": "vs2022",
+            "configuration": "Release"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "execution": {
+                "stopOnFailure": true
+            }
+        },
+        {
+            "name": "linux",
+            "inherits": "default",
+            "configurePreset": "linux"
+        },
+        {
+            "name": "vs2017",
+            "inherits": "default",
+            "configurePreset": "vs2017"
+        },
+        {
+            "name": "vs2022",
+            "inherits": "default",
+            "configurePreset": "vs2022"
+        }
+    ],
+    "packagePresets": [
+        {
+            "name": "linux",
+            "configurePreset": "linux",
+            "hidden": true,
+            "packageDirectory": "${sourceParentDir}/product/linux"
+        },
+        {
+            "name": "deb",
+            "inherits": "linux",
+            "generators": [
+                "DEB"
+            ]
+        },
+        {
+            "name": "rpm",
+            "inherits": "linux",
+            "generators": [
+                "RPM"
+            ]
+        },
+        {
+            "name": "tar",
+            "inherits": "linux",
+            "generators": [
+                "TXZ", "TGZ"
+            ],
+            "variables": {
+                "CPACK_INCLUDE_TOPLEVEL_DIRECTORY": "OFF"
+            }
+        },
+        {
+            "name": "vs2022",
+            "configurePreset": "vs2022",
+            "generators": [
+                "NSIS"
+            ],
+            "packageDirectory": "${sourceParentDir}/product/win32"
+        },
+        {
+            "name": "vs2017",
+            "inherits": "vs2022",
+            "configurePreset": "vs2017"
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "linux",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "linux"
+                },
+                {
+                    "type": "build",
+                    "name": "linux"
+                },
+                {
+                    "type": "test",
+                    "name": "linux"
+                },
+                {
+                    "type": "package",
+                    "name": "deb"
+                },
+                {
+                    "type": "package",
+                    "name": "rpm"
+                },
+                {
+                    "type": "package",
+                    "name": "tar"
+                }
+            ]
+        },
+        {
+            "name": "vs2017",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "vs2017"
+                },
+                {
+                    "type": "build",
+                    "name": "vs2017"
+                },
+                {
+                    "type": "test",
+                    "name": "vs2017"
+                },
+                {
+                    "type": "package",
+                    "name": "vs2017"
+                }
+            ]
+        },
+        {
+            "name": "vs2022",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "vs2022"
+                },
+                {
+                    "type": "build",
+                    "name": "vs2022"
+                },
+                {
+                    "type": "test",
+                    "name": "vs2022"
+                },
+                {
+                    "type": "package",
+                    "name": "vs2022"
+                }
+            ]
+        }
+    ]
+}

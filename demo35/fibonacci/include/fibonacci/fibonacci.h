@@ -1,4 +1,4 @@
-// 文件 src/include/fibonacci.h
+// 文件 include/fibonacci/fibonacci.h
 
 #ifndef __FIBONACCI_H___
 #define __FIBONACCI_H___

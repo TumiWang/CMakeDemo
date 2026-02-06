@@ -1,0 +1,82 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "debug",
+            "hidden": true,
+            "binaryDir": "${sourceParentDir}/build/debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": {
+                    "type": "STRING",
+                    "value": "Debug"
+                }
+            }
+        },
+        {
+            "name": "TestWithLinuxNinja",
+            "inherits": "debug",
+            "generator": "Ninja"
+        },
+        {
+            "name": "TestWithXcode",
+            "inherits": "debug",
+            "generator": "Xcode"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "TestWithLinuxNinja",
+            "configurePreset": "TestWithLinuxNinja"
+        },
+        {
+            "name": "TestWithXcode",
+            "configurePreset": "TestWithXcode"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "TestWithLinuxNinja",
+            "configurePreset": "TestWithLinuxNinja"
+        },
+        {
+            "name": "TestWithXcode",
+            "configurePreset": "TestWithXcode"
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "TestWithLinuxNinja",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "TestWithLinuxNinja"
+                },
+                {
+                    "type": "build",
+                    "name": "TestWithLinuxNinja"
+                },
+                {
+                    "type": "test",
+                    "name": "TestWithLinuxNinja"
+                }
+            ]
+        },
+        {
+            "name": "TestWithXcode",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "TestWithXcode"
+                },
+                {
+                    "type": "build",
+                    "name": "TestWithXcode"
+                },
+                {
+                    "type": "test",
+                    "name": "TestWithXcode"
+                }
+            ]
+        }
+    ]
+}
