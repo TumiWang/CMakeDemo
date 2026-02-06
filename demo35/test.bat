@@ -16,7 +16,7 @@ CD fibonacci
 :: cmake --workflow --list-presets
 
 :: Windows VS2017 32λ
-cmake --workflow --presets vs2017
+cmake --workflow --preset vs2017
 
 :: Windows VS2022 32λ
-:: cmake --workflow --presets vs2022
+:: cmake --workflow --preset vs2022

@@ -13,8 +13,8 @@ cd fibonacci
 # cmake --workflow --list-presets
 
 # Linux
-# cmake --workflow --presets linux
-cmake --workflow --presets TestWithLinuxNinja
+# cmake --workflow --preset linux
+cmake --workflow --preset TestWithLinuxNinja
 
 # MacOS
-# cmake --workflow --presets xcode
+# cmake --workflow --preset xcode

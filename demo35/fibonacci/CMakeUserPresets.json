@@ -30,7 +30,8 @@
         },
         {
             "name": "TestWithXcode",
-            "configurePreset": "TestWithXcode"
+            "configurePreset": "TestWithXcode",
+            "configuration": "Debug"
         }
     ],
     "testPresets": [
