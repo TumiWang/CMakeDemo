@@ -119,3 +119,8 @@ RUN apt-get -y install libarchive-dev
 RUN apt-get -y install libc++-19-dev
 RUN apt-get -y clean
 ```
+
+# demo34-2
+
+productbuild 的 distribution.xml 的文件介绍
+https://developer.apple.com/library/archive/documentation/DeveloperTools/Reference/DistributionDefinitionRef/Chapters/Distribution_XML_Ref.html
