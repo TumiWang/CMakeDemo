@@ -14,7 +14,7 @@ cd fibonacci
 
 # Linux
 # cmake --workflow --preset linux
-cmake --workflow --preset TestWithLinuxNinja
+# cmake --workflow --preset TestWithLinuxNinja
 
 # MacOS
-# cmake --workflow --preset TestWithXcode
+cmake --workflow --preset TestWithXcode

@@ -19,7 +19,7 @@ if [ -d "$PRODUCT_DIR" ]; then
     rm -rf "$PRODUCT_DIR"
 fi
 
-cmake -B "$BUILD_DIR" -S src -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+cmake -B "$BUILD_DIR" -S src -DCMAKE_BUILD_TYPE=$BUILD_TYPE 
 
 cmake --build "$BUILD_DIR"
 
@@ -27,4 +27,6 @@ cmake --build "$BUILD_DIR"
 
 cd "$BUILD_DIR"
 
-cpack -G productbuild
+# cpack -G productbuild -V
+cpack -G productbuild -D CPACK_PACKAGING_INSTALL_PREFIX=/opt/local
+# cpack -G TGZ -V
